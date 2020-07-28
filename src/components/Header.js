@@ -1,104 +1,134 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-//CSS Styling
-const HeaderAppBar = styled.header`
-  width: 100%;
+const StyledMenu = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: pink;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  height: 100vh;
+  text-align: left;
+  padding: 2rem;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
-`;
+  transition: transform 0.3s ease-in-out;
 
-const Container = styled.div`
-  width: 100%;
-  max-width: 122.5rem;
-  margin: 0 auto;
-  padding: 0 2.4rem;
-`;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 
-const Nav = styled.nav`
-  height: 7.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    opacity: 0;
-    transform: scale(0);
+  a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: #0d0c1d;
+    text-decoration: none;
+    transition: color 0.3s linear;
+
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &:hover {
+      color: #000;
+    }
   }
 `;
 
-const MenuToggle = styled.div`
-  color: #fff;
-  font-size: 2.2rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 2.5rem;
-  cursor: pointer;
-  z-index: 1500;
-`;
+const Menu = ({ open }) => {
+  return (
+    <StyledMenu open={open}>
+      <a href="/">
+        <span role="img" aria-label="about us">
+          💁🏻‍♂️
+        </span>
+        About us
+      </a>
+      <a href="/">
+        <span role="img" aria-label="price">
+          💸
+        </span>
+        Pricing
+      </a>
+      <a href="/">
+        <span role="img" aria-label="contact">
+          📩
+        </span>
+        Contact
+      </a>
+    </StyledMenu>
+  );
+};
 
-const NavList = styled.ul`
-  list-style: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 80%;
-  height: 100vh;
-  background-color: var(--main-font-color-dark);
-  padding: 4.4rem;
+const StyledBurger = styled.button`
+  position: absolute;
+  top: 5%;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  z-index: 1250;
-  /* transform: translateX(-100%); */
-  transition: transform 0.5s;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: ${({ open }) => (open ? "#0D0C1D" : "pink")};
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    :first-child {
+      transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+    }
+
+    :nth-child(2) {
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
+    }
+
+    :nth-child(3) {
+      transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
+    }
+  }
 `;
 
-function Header() {
+const Burger = ({ open, setOpen }) => {
   return (
-    <HeaderAppBar>
-      <Container>
-        <Nav>
-          <MenuToggle>
-            <FontAwesomeIcon icon={faBars} />
-            <FontAwesomeIcon style={{ display: "none" }} icon={faTimes} />
-          </MenuToggle>
-          <a href="/">
-            <img src="/lilly.png" alt="" />
-          </a>
-          <NavList>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/Flowers">Flowers</a>
-            </li>
-            <li>
-              <a href="/Reservations">Reservations</a>
-            </li>
-            <li>
-              <a href="/Shop">Shop</a>
-            </li>
-            <li>
-              <a href="/Contact">Contact</a>
-            </li>
-          </NavList>
-        </Nav>
-      </Container>
-    </HeaderAppBar>
+    <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <div />
+      <div />
+      <div />
+    </StyledBurger>
+  );
+};
+
+function Header() {
+  const [open, setOpen] = React.useState(false);
+  const node = React.useRef();
+  return (
+    <div>
+      <div ref={node}>
+        <Burger style={{ color: "black" }} open={open} setOpen={setOpen} />
+
+        <Menu open={open} setOpen={setOpen} />
+      </div>
+    </div>
   );
 }
 
