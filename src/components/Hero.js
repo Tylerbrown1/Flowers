@@ -123,7 +123,7 @@ const Buttons = styled.a`
 
 function Hero() {
   return (
-    <Heros>
+    <Heros id="hero">
       <Container>
         <SubHeadline>
           <FirstLetter>W</FirstLetter>elcome

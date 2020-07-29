@@ -101,7 +101,7 @@ function Ourstory() {
             <Buttons href="#">About Us</Buttons>
           </FlowerDescrip>
           <div className="flower-info-img">
-            <img src="/wedding.jpg" alt="" />
+            <img src="/roma.jpg" alt="" />
           </div>
         </FlowerInfo>
       </Container>

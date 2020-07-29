@@ -14,6 +14,18 @@ const StyledMenu = styled.nav`
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  @media screen and (min-width: 900px) {
+    position: absolute;
+    width: 100%;
+    height: initial;
+    background-color: transparent;
+    padding: 0;
+    justify-content: flex-end;
+    flex-direction: row;
+    transform: initial;
+    transition: initial;
+  }
 
   @media (max-width: 576px) {
     width: 100%;
@@ -28,6 +40,12 @@ const StyledMenu = styled.nav`
     color: #0d0c1d;
     text-decoration: none;
     transition: color 0.3s linear;
+
+    @media screen and (min-width: 900px) {
+      color: #fff;
+      padding: 2rem;
+      font-size: 1rem;
+    }
 
     @media (max-width: 576px) {
       font-size: 1.5rem;
@@ -44,21 +62,17 @@ const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
       <a href="/">
-        <span role="img" aria-label="about us">
-          💁🏻‍♂️
-        </span>
+        <span role="img" aria-label="about us"></span>
         About us
       </a>
+
       <a href="/">
-        <span role="img" aria-label="price">
-          💸
-        </span>
+        <span role="img" aria-label="price"></span>
         Pricing
       </a>
+
       <a href="/">
-        <span role="img" aria-label="contact">
-          📩
-        </span>
+        <span role="img" aria-label="contact"></span>
         Contact
       </a>
     </StyledMenu>
@@ -79,6 +93,9 @@ const StyledBurger = styled.button`
   cursor: pointer;
   padding: 0;
   z-index: 10;
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
 
   &:focus {
     outline: none;
