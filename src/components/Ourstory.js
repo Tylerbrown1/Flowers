@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Flower } from "@styled-icons/ionicons-outline/Flower";
+import Slide from "react-reveal/Slide";
+import Fade from "react-reveal/Fade";
 
 const Container = styled.div`
   width: 100%;
@@ -48,9 +50,23 @@ const FlowerIcon = styled(Flower)`
 
 const FlowerInfo = styled.div`
   text-align: center;
+  @media screen and (min-width: 900px) {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+`;
+const FlowerImg = styled.div`
+  @media screen and (min-width: 900px) {
+    flex: 1;
+    padding-left: 7rem;
+  }
 `;
 const FlowerDescrip = styled.div`
   margin-bottom: 3rem;
+  @media screen and (min-width: 900px) {
+    flex: 1;
+  }
 `;
 
 const Description = styled.p`
@@ -85,24 +101,29 @@ function Ourstory() {
       <Container>
         <FlowerInfo>
           <FlowerDescrip>
-            <GlobalHeadline>
-              <SubHeadline>
-                <FirstLetter>D</FirstLetter>iscover
-              </SubHeadline>
-              <Headline>Our Story</Headline>
-              <FlowerIcon />
-            </GlobalHeadline>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-              fugit tempore enim nesciunt optio eveniet labore, nihil
-              voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
-              quisquam exercitationem similique odio dignissimos ducimus.
-            </Description>
-            <Buttons href="#">About Us</Buttons>
+            <Fade top>
+              <GlobalHeadline>
+                <SubHeadline>
+                  <FirstLetter>D</FirstLetter>iscover
+                </SubHeadline>
+                <Headline>Our Story</Headline>
+                <FlowerIcon />
+              </GlobalHeadline>
+              <Description>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                fugit tempore enim nesciunt optio eveniet labore, nihil
+                voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
+                quisquam exercitationem similique odio dignissimos ducimus.
+              </Description>
+              <Buttons href="#">About Us</Buttons>
+            </Fade>
           </FlowerDescrip>
-          <div className="flower-info-img">
-            <img src="/roma.jpg" alt="" />
-          </div>
+
+          <FlowerImg>
+            <Slide right>
+              <img src="/roma.jpg" alt="" />
+            </Slide>
+          </FlowerImg>
         </FlowerInfo>
       </Container>
     </section>

@@ -1,6 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { Flower } from "@styled-icons/ionicons-outline/Flower";
+
+const fadeUp = keyframes`
+  0% {
+    transform: translateY(4rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -27,11 +36,20 @@ const SubHeadline = styled.h2`
   font-weight: 100;
   line-height: 0.4;
   letter-spacing: 2px;
+
+  @media screen and (min-width: 900px) {
+    font-size: 10rem;
+    animation: ${fadeUp} 0.5s forwards;
+    animation-delay: 1s;
+  }
 `;
 
 const FirstLetter = styled.span`
   text-transform: uppercase;
   font-size: 10.3rem;
+  @media screen and (min-width: 900px) {
+    font-size: 12.2rem;
+  }
 `;
 
 const Headline = styled.h1`
@@ -42,6 +60,11 @@ const Headline = styled.h1`
   font-weight: 900;
   letter-spacing: 0.5rem;
   margin-right: -0.5rem;
+
+  @media screen and (min-width: 900px) {
+    font-size: 4.7rem;
+    letter-spacing: 0.8rem;
+  }
 `;
 
 const Separator = styled.div`
@@ -65,6 +88,9 @@ const LineLeft = styled.div`
     border-left-color: #fff;
     left: 0;
   }
+  @media screen and (min-width: 900px) {
+    max-width: 11.4rem;
+  }
 `;
 
 const LineRight = styled.div`
@@ -81,6 +107,9 @@ const LineRight = styled.div`
     border: 0.6rem solid transparent;
     border-right-color: #fff;
     right: 0;
+  }
+  @media screen and (min-width: 900px) {
+    max-width: 11.4rem;
   }
 `;
 const FlowerIcon = styled(Flower)`
@@ -118,6 +147,14 @@ const Buttons = styled.a`
   &:focus {
     color: #fff;
     background-color: pink;
+  }
+  @media screen and (min-width: 900px) {
+    background-color: pink;
+    color: #fff;
+    &:hover {
+      background-color: white;
+      color: pink;
+    }
   }
 `;
 

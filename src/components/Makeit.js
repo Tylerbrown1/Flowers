@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Flower } from "@styled-icons/ionicons-outline/Flower";
+import Fade from "react-reveal/Fade";
+import Roll from "react-reveal/Roll";
 
 const Container = styled.div`
   width: 100%;
@@ -48,9 +50,16 @@ const FlowerIcon = styled(Flower)`
 
 const FlowerInfo = styled.div`
   text-align: center;
+  @media screen and (min-width: 900px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 const FlowerDescrip = styled.div`
   margin-bottom: 3rem;
+  @media screen and (min-width: 900px) {
+    flex: 1;
+  }
 `;
 
 const Description = styled.p`
@@ -83,6 +92,10 @@ const ImgGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
+  @media screen and (min-width: 900px) {
+    flex: 1;
+    padding-left: 7rem;
+  }
 `;
 
 function Makeit() {
@@ -91,24 +104,28 @@ function Makeit() {
       <Container>
         <FlowerInfo>
           <FlowerDescrip>
-            <GlobalHeadline>
-              <SubHeadline>
-                <FirstLetter>M</FirstLetter>akeIt
-              </SubHeadline>
-              <Headline>Special</Headline>
-              <FlowerIcon />
-            </GlobalHeadline>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-              fugit tempore enim nesciunt optio eveniet labore, nihil
-              voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
-              quisquam exercitationem similique odio dignissimos ducimus.
-            </Description>
-            <Buttons href="#">Book Now</Buttons>
+            <Fade right>
+              <GlobalHeadline>
+                <SubHeadline>
+                  <FirstLetter>M</FirstLetter>akeIt
+                </SubHeadline>
+                <Headline>Special</Headline>
+                <FlowerIcon />
+              </GlobalHeadline>
+              <Description>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                fugit tempore enim nesciunt optio eveniet labore, nihil
+                voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
+                quisquam exercitationem similique odio dignissimos ducimus.
+              </Description>
+              <Buttons href="#">Book Now</Buttons>
+            </Fade>
           </FlowerDescrip>
           <ImgGroup>
-            <img src="/walk.jpg" alt="" />
-            <img src="/ring.jpg" alt="" />
+            <Roll right>
+              <img src="/walk.jpg" alt="" />
+              <img src="/ring.jpg" alt="" />
+            </Roll>
           </ImgGroup>
         </FlowerInfo>
       </Container>

@@ -53,7 +53,7 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: #000;
+      color: pink;
     }
   }
 `;

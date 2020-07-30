@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Flower } from "@styled-icons/ionicons-outline/Flower";
+import Zoom from "react-reveal/Zoom";
+import Slide from "react-reveal/Slide";
 
 const Container = styled.div`
   width: 100%;
@@ -50,13 +52,31 @@ const ImgGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
+  @media screen and (min-width: 900px) {
+    flex: 1;
+  }
 `;
 
 const FlowerInfo = styled.div`
   text-align: center;
+  @media screen and (min-width: 900px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 const FlowerDescrip = styled.div`
   margin-bottom: 3rem;
+  @media screen and (min-width: 900px) {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const DescriptDiv = styled.div`
+  @media screen and (min-width: 900px) {
+    flex: 1;
+    padding-left: 7rem;
+  }
 `;
 
 const Description = styled.p`
@@ -92,27 +112,33 @@ function Discover() {
         <FlowerInfo>
           <FlowerDescrip>
             <ImgGroup>
-              <img src="/table.jpg" alt="" />
-              <img src="/holding.jpg" alt="" />
-              <img src="/light.jpg" alt="" />
-              <img src="/girls.jpg" alt="" />
+              <Zoom>
+                <img src="/table.jpg" alt="" />
+                <img src="/holding.jpg" alt="" />
+                <img src="/light.jpg" alt="" />
+                <img src="/girls.jpg" alt="" />
+              </Zoom>
             </ImgGroup>
-            <div>
-              <GlobalHeadline>
-                <SubHeadline>
-                  <FirstLetter>D</FirstLetter>iscover
-                </SubHeadline>
-                <Headline>Our Designs</Headline>
-                <FlowerIcon />
-              </GlobalHeadline>
-            </div>
-            <Description>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-              fugit tempore enim nesciunt optio eveniet labore, nihil
-              voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
-              quisquam exercitationem similique odio dignissimos ducimus.
-            </Description>
-            <Buttons href="#">Discover Designs</Buttons>
+
+            <DescriptDiv>
+              <Slide bottom>
+                <GlobalHeadline>
+                  <SubHeadline>
+                    <FirstLetter>D</FirstLetter>iscover
+                  </SubHeadline>
+                  <Headline>Our Designs</Headline>
+                  <FlowerIcon />
+                </GlobalHeadline>
+
+                <Description>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                  fugit tempore enim nesciunt optio eveniet labore, nihil
+                  voluptatibus quaerat rerum. Officiis, et repudiandae aliquid
+                  quisquam exercitationem similique odio dignissimos ducimus.
+                </Description>
+                <Buttons href="#">Discover Designs</Buttons>
+              </Slide>
+            </DescriptDiv>
           </FlowerDescrip>
         </FlowerInfo>
       </Container>
